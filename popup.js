@@ -1,7 +1,6 @@
 window.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById("blueSquare").addEventListener("click", function(event) {
-        
         if (event.target !== document.getElementById("odd2Input")) {
             document.getElementById("odd1Input").focus();
         }
@@ -14,10 +13,8 @@ window.addEventListener("DOMContentLoaded", function() {
 
         if (odd1Value && odd2Value && !isNaN(odd1Value) && !isNaN(odd2Value)) {
             let m = ((1/odd1Value) + (1/odd2Value)) - 1;
-            let teamOne = ((2 * odd1Value) / (2 - (m * odd1Value)) + 0.045);
+            let teamOne = ((2 * odd1Value) / (2 - (m * odd1Value))) * 1.021;
             document.getElementById("result").textContent = "Over: " + teamOne.toFixed(3)
-
-            
         }
     });
 
@@ -28,15 +25,10 @@ window.addEventListener("DOMContentLoaded", function() {
 
         if (odd1Value && odd2Value && !isNaN(odd1Value) && !isNaN(odd2Value)) {
             let m = ((1/odd1Value) + (1/odd2Value)) - 1;
-            let teamTwo = ((2 * odd2Value) / (2 - (m * odd2Value)) + 0.045);
+            let teamTwo = ((2 * odd2Value) / (2 - (m * odd2Value)) * 1.021);
             document.getElementById("result").textContent = "Over: " + teamTwo.toFixed(3)
-
-
-
         }
     });
-
-
 
     // Red Square
     document.getElementById("redSquare").addEventListener("click", function(event2) {
@@ -45,4 +37,11 @@ window.addEventListener("DOMContentLoaded", function() {
         }
     }); 
 
+    // Add the new event listener for odd1Input
+    document.getElementById("odd1Input").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("odd2Input").focus();
+        }
+    });
 });
