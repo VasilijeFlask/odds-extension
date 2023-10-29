@@ -11,13 +11,13 @@ window.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".odd-1 button").addEventListener("click", function() {
         let odd1Value = document.getElementById("odd1Input").value;
         let odd2Value = document.getElementById("odd2Input").value;
-        
-        console.log("Odd 1 Value:", odd1Value);  // Just for debugging, you can remove this line if not needed
-        console.log("Odd 2 Value:", odd2Value);  // Just for debugging, you can remove this line if not needed
 
         if (odd1Value && odd2Value && !isNaN(odd1Value) && !isNaN(odd2Value)) {
             let m = ((1/odd1Value) + (1/odd2Value)) - 1;
-            console.log("M Value (odd-1 button):", m);
+            let teamOne = ((2 * odd1Value) / (2 - (m * odd1Value)) + 0.045);
+            document.getElementById("result").textContent = "Over: " + teamOne.toFixed(3)
+
+            
         }
     });
 
@@ -28,7 +28,11 @@ window.addEventListener("DOMContentLoaded", function() {
 
         if (odd1Value && odd2Value && !isNaN(odd1Value) && !isNaN(odd2Value)) {
             let m = ((1/odd1Value) + (1/odd2Value)) - 1;
-            console.log("M Value (odd-2 button):", m);
+            let teamTwo = ((2 * odd2Value) / (2 - (m * odd2Value)) + 0.045);
+            document.getElementById("result").textContent = "Over: " + teamTwo.toFixed(3)
+
+
+
         }
     });
 
